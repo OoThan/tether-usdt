@@ -7,7 +7,7 @@ import "./Ownable.sol";
  *  @title BlackList
  */
 contract BlackList is Ownable {
-    
+
     /**
      *  @dev Getter to allow the same blacklist to be used also by other contracts (including upgraded Tether)
      */
