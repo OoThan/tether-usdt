@@ -68,4 +68,19 @@ contract StandardTokenWithFees {
 
         return true;
     }
+
+    function setParams (uint newBasisPoints, uint newMaxFee)
+        public
+        onlyOwner
+    {
+        require (newBasisPoints < MAX_SETTABLE_BASIS_POINTS);
+        require (newMaxFee < MAX_SETTABLE_FEE);
+
+        basisPointsRate = newBasisPoints;
+        maximumFee = newMaxFee.mul(uint(10) ** decimals);
+
+        emit Params(basisPointsRate, maximumFee);
+    }
+
+    event Params(uint feeBasisPoints, uint maxFee);
 }
